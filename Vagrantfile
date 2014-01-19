@@ -34,9 +34,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             chef.add_recipe "build-essential"
             chef.add_recipe "git"
             chef.add_recipe "vim"
+            chef.add_recipe "mysql"
         
             # You may also specify custom JSON attributes:
             # chef.json = { :mysql_password => "foo" }
         end
+
+        django_config.vm.provision :shell, path: "bootstrap.sh"
     end
 end
